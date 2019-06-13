@@ -8,6 +8,7 @@ class App extends Component {
   state = {
     pokemon : []
   }
+  
   componentDidMount(){
     axios.get('/?offset=0&limit=500').then(response => {
       response.data['results'].map(data => {
@@ -20,10 +21,12 @@ class App extends Component {
       })      
     })   
   }
+
   render(){
     const pokedex = this.state.pokemon.map(data => {
       return <Pokedex details = {data} key = {data.id}/>
     })
+
     return (
       <div className="App">
         <div className="container-fluid">
